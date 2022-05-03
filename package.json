@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Housewolf core scripts and assets for games",
   "displayName": "Housewolf Core",
-  "unity": "2021.3.1",
+  "unity": "2021.3",
   "main": "index.js",
   "author": {
     "name": "Ryan Valentin",
