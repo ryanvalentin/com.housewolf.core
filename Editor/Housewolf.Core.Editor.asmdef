@@ -2,7 +2,8 @@
     "name": "Housewolf.Core.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:bbd184c2da6f0e9449fb22b164f7427f"
+        "GUID:bbd184c2da6f0e9449fb22b164f7427f",
+        "GUID:4db1229c02f3f629bdd928353859c2b3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
