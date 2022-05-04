@@ -23,19 +23,7 @@ using UnityEngine.SceneManagement;
 public class FloatingOriginUtility : MonoBehaviour
 {
     private static FloatingOriginUtility _instance = null;
-    public static FloatingOriginUtility Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                var go = new GameObject();
-                _instance = go.AddComponent<FloatingOriginUtility>();
-            }
-
-            return _instance;
-        }
-    }
+    public static FloatingOriginUtility Instance => _instance;
 
     [Header("Properties")]
     [Tooltip("Use a power of 2 to avoid pops in ocean surface geometry."), SerializeField]
@@ -176,6 +164,11 @@ public class FloatingOriginUtility : MonoBehaviour
         int instId = rb.GetInstanceID();
         if (_rigidbodyMap.ContainsKey(instId))
             _rigidbodyMap.Remove(instId);
+    }
+
+    private void Awake()
+    {
+        _instance = this;
     }
 
     private void Start()
@@ -337,7 +330,9 @@ public class FloatingOriginUtility : MonoBehaviour
     /// </summary>
     private void MoveOriginMicrosplatShader(Vector3 newOrigin)
     {
+#if MICROSPLAT
         Shader.SetGlobalMatrix("_GlobalOriginMTX", Matrix4x4.TRS(newOrigin, Quaternion.identity, Vector3.one));
+#endif
     }
 
     /// <summary>
