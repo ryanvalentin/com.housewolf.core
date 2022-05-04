@@ -15,6 +15,12 @@ namespace Housewolf.EntitySystem
         {
             get
             {
+                if (!_current)
+                {
+                    var go = new GameObject("Entity System Container");
+                    _current = go.AddComponent<EntitySystemContainer>();
+                }
+
                 return _current;
             }
         }
