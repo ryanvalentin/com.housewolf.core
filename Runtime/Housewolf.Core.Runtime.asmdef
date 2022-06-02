@@ -2,9 +2,12 @@
     "name": "Housewolf.Core.Runtime",
     "rootNamespace": "",
     "references": [
+        "GUID:5b35af79ebbe89647a157055d52c59d3",
+        "GUID:274733d13d57d9e4c8d27ed766fbf4c1",
+        "GUID:4bdfb2239705740718731d0b4d54061d",
+        "GUID:e048eeec9bdb9d30448017b829deb3f6",
         "GUID:2665a8d13d1b3f18800f46e256720795",
-        "GUID:d8b63aba1907145bea998dd612889d6b",
-        "GUID:e048eeec9bdb9d30448017b829deb3f6"
+        "GUID:d8b63aba1907145bea998dd612889d6b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -13,6 +16,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.jbooth.microsplat.core",
+            "expression": "",
+            "define": "MICROSPLAT"
+        }
+    ],
     "noEngineReferences": false
 }

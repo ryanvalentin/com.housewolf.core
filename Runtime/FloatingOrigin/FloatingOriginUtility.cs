@@ -53,7 +53,7 @@ public class FloatingOriginUtility : MonoBehaviour
     [Tooltip("Optionally provide a list of rigidbodies to avoid doing a FindObjectsOfType() call."), SerializeField]
     private Rigidbody[] _overrideRigidbodyList = null;
 
-#if CREST
+#if CREST_OCEAN
     [Tooltip("Optionally provide a list of Gerstner components to avoid doing a FindObjectsOfType() call."), SerializeField]
     private Crest.ShapeGerstnerBatched[] _overrideGerstnerList = null;
 #endif
