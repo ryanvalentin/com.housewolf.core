@@ -56,6 +56,8 @@ public class FloatingOriginUtility : MonoBehaviour
 #if CREST_OCEAN
     [Tooltip("Optionally provide a list of Gerstner components to avoid doing a FindObjectsOfType() call."), SerializeField]
     private Crest.ShapeGerstnerBatched[] _overrideGerstnerList = null;
+
+    public static readonly int _crestFloatingOriginOffset = Shader.PropertyToID("_CrestFloatingOriginOffset");
 #endif
 
     private Dictionary<int, Transform> _transformMap = null;
@@ -302,21 +304,25 @@ public class FloatingOriginUtility : MonoBehaviour
     /// <summary>
     /// Notify ocean of origin shift
     /// </summary>
-    private void MoveOriginOcean(Vector3 newOrigin)
+    void MoveOriginOcean(Vector3 newOrigin)
     {
-#if CREST
-        if (OceanRenderer.Instance)
+#if CREST_OCEAN
+        if (Crest.OceanRenderer.Instance)
         {
-            OceanRenderer.Instance._lodTransform.SetOrigin(newOrigin);
+            Crest.OceanRenderer.Instance._lodTransform.SetOrigin(newOrigin);
 
-            var fos = OceanRenderer.Instance.GetComponentsInChildren<IFloatingOrigin>();
+            // TODO: This is from original crest component, they -= the new offset while we += - figure out if that matters
+            //_originOffset -= newOrigin;
+            Shader.SetGlobalVector(_crestFloatingOriginOffset, CurrentOffset);
+
+            var fos = Crest.OceanRenderer.Instance.GetComponentsInChildren<Crest.IFloatingOrigin>();
             foreach (var fo in fos)
             {
                 fo.SetOrigin(newOrigin);
             }
 
             // Gerstner components
-            var gerstners = _overrideGerstnerList != null && _overrideGerstnerList.Length > 0 ? _overrideGerstnerList : FindObjectsOfType<ShapeGerstnerBatched>();
+            var gerstners = _overrideGerstnerList != null && _overrideGerstnerList.Length > 0 ? _overrideGerstnerList : FindObjectsOfType<Crest.ShapeGerstnerBatched>();
             foreach (var gerstner in gerstners)
             {
                 gerstner.SetOrigin(newOrigin);
