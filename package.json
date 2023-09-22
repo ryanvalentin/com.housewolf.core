@@ -1,6 +1,6 @@
 {
   "name": "com.housewolf.core",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Housewolf core scripts and assets for games",
   "displayName": "Housewolf Core",
   "unity": "2021.3",
